@@ -1,3 +1,6 @@
+# LAMOUREUX Camille - 291756
+# 2DTTL - Final Project
+
 import initialisation as i
 
 # Data visualization with html
