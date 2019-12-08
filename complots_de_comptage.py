@@ -22,6 +22,6 @@ NOTES :
     COUNT PLOTS = échelle représentant les effectifs
     DISTPLOTS = échelle entre 0 et 1 (fréquence)
     
-    USED WHEN : le distplot permet d'estimer la distribution des données
-    le count plots montre le nombre d'éléments dans chaque catégories sous forme de barres (ex : histogramme)
+    USED WHEN : le distplot permet d'estimer la distribution des données, faire une analyse de fréquence
+    Le count plots montre le nombre d'éléments, l'effectif, dans chaque catégories sous forme de barres (ex : histogramme)
 '''
