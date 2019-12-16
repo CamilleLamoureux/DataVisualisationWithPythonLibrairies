@@ -21,11 +21,11 @@ minimum = i.data['Overall'].min()
 maximum = i.data['Overall'].max()
 data_range = maximum - minimum
 print(
-    'Modal value : ',modal_value,'\n',
     'Mean : ',mean,'\n',
     'Median : ',median,'\n',
     'Standard deviation : ',standard_deviation,'\n',
     'Range : ',data_range,'\n'
+    'Modal value : ',modal_value,'\n'
 )
 
 
@@ -40,7 +40,7 @@ EXEMPLES DE VARIABLES :
     2 variables catégorielles : Club & Preferred Foot => des variables qui sont parmi une liste de catégories possibles
     
 NOTES SUR L'HISTOGRAMME :
-    Valeur approximative du modal :
+    Valeur approximative du modal : 66
     Valeurs abhérentes : Non, nous observons une courbe en cloche qui semble logique
     Autres : aucun 70 ?
 """

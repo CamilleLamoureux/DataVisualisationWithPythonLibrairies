@@ -3,10 +3,11 @@
 
 # Importations
 import initialisation as i
-from sklearn import model_selection
-from sklearn.linear_model import LogisticRegression
-from sklearn import metrics
 import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn import datasets, linear_model
+from sklearn.metrics import mean_squared_error,r2_score
+from sklearn.model_selection import train_test_split
 
 # Functions definitions
 def price_formating(price):
@@ -24,53 +25,45 @@ def weight_formating(df):
 
     return df
 
+def unvalid_lines_cleaner(df):
+    df = df.head(400)
+
+    return df
+
 
 def data_frame_cleaner(df):
     # Identifying columns
     useless_columns = ['Name','Photo','Flag','Club Logo','Contract Valid Until','Release Clause']
     not_numbers_columns = ['Nationality','Club','Preferred Foot','Work Rate','Body Type','Real Face','Position','Joined','Loaned From']
     unknown_columns = ['LS','ST','RS','LW','LF','CF','RF','RW','LAM','CAM','RAM','LM','LCM','CM','RCM','RM','LWB','LDM','CDM','RDM','RWB','LB','LCB','CB','RCB','RB']
-    to_drop = useless_columns + unknown_columns
+    to_drop = useless_columns + unknown_columns + not_numbers_columns
 
     # Droping columns
     cleaned_df = df.drop(columns=to_drop)
+
+    # Droping lines
+    cleaned_df = unvalid_lines_cleaner(df)
+
 
     # Formating columns
     cleaned_df = weight_formating(cleaned_df)
     cleaned_df['Value'] = cleaned_df['Value'].apply(price_formating)
     cleaned_df['Wage'] = cleaned_df['Wage'].apply(price_formating)
-    for col in not_numbers_columns :
-        pd.get_dummies(cleaned_df[col])
+
+    #for col in not_numbers_columns :
+    #   pd.get_dummies(cleaned_df[col])
+
 
     return cleaned_df
 
 
+# DATA CLEAN
+cleaned_df = data_frame_cleaner(i.data)
 
-# MAIN
-cleaned_data_frame = data_frame_cleaner(i.data)
+# INITIALISATION
+X = cleaned_df['Age','Overall','Potential','Height','Weight']
+y = cleaned_df['Value']
 
-'''
-# FORMATAGE DES DONNEES
-data_matrix = data.as_matrix()
-x = data_matrix[:,54:59]
-y = data_matrix[:,11]
-
-# SUBDIVISION DES DONNEES
-x_app,x_test,y_app,y_test = model_selection.train_test_split(x,y,
-                                                             test_size=300,
-                                                             random_state=0)
-
-# REGRESSION LOGIQUE
-regression = LogisticRegression()
-modele = regression.fit(x_app,y_app)
-print(modele.coef_, modele.intercept_)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 # PREDICTION
-y_prediction = modele.predict(x_test)
-
-
-
-print(x)
-'''
-
-
