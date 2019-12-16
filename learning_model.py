@@ -61,9 +61,10 @@ def data_frame_cleaner(df):
 cleaned_df = data_frame_cleaner(i.data)
 
 # INITIALISATION
-X = cleaned_df['Age','Overall','Potential','Height','Weight']
+X = cleaned_df['Age','Overall','Potential','Height','Weight'].values
 y = cleaned_df['Value']
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.5, random_state=50)
 
 # PREDICTION
+linear_regression = linear_model.LinearRegression().fit(X,y)
