@@ -8,3 +8,4 @@ print("TYPES : ")
 print(i.data.dtypes)
 print("ATTRIBUTES : ")
 print(dir(i.data))
+

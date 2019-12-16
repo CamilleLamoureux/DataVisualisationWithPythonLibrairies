@@ -11,11 +11,12 @@ print(more_players_country,'got the biggest number of players.')
 #i.sns.countplot(data=i.data,x='Overall')
 
 # Exemple de distplot
-#i.sns.distplot(i.data['Overall'])
+i.sns.distplot(i.data['Overall'])
 
 # Display
 i.plt.xticks(rotation=90)
 i.plt.show()
+
 
 '''
 NOTES :

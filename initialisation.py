@@ -10,3 +10,8 @@ import matplotlib.pyplot as plt
 
 # Reading the csv file into a DF
 data = pd.read_csv('data.csv')
+
+
+
+
+
